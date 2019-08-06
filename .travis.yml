@@ -19,4 +19,6 @@ jobs:
       # check all links using blc
       script: bash blc-good-enough.sh 10
     - stage: deploy
-      script: echo 'hello world'
+      deploy:
+        provider: script
+        script: echo 'hello world'
