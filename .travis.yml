@@ -18,3 +18,11 @@ jobs:
       if: type = cron
       # check all links using blc
       script: bash blc-good-enough.sh 10
+    - stage: deploy
+      before_deploy:
+        - sudo apt-get install -y calibre
+      script: .deploy.sh
+      deploy:
+        on:
+          tags: true
+          branch: master
