@@ -19,10 +19,4 @@ jobs:
       # check all links using blc
       script: bash blc-good-enough.sh 10
     - stage: deploy
-      before_deploy:
-        - sudo apt-get install -y calibre
-      deploy:
-        provider: script
-        script: echo 'hello world'
-        on:
-          branch: develop
+      script: echo 'hello world'
