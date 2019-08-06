@@ -22,3 +22,5 @@ jobs:
       before_script:
         - sudo apt-get install -y calibre
       script: bash deploy.sh
+        on:
+          tags: true
