@@ -8,7 +8,7 @@ install:
   - npm install gitbook-cli broken-link-checker
   - node_modules/.bin/gitbook install
   - node_modules/.bin/gitbook serve --no-live --no-watch &
-  # wait for gitboook serve spinup
+  # wait for gitbook serve spinup
   - sleep 20
 jobs:
   include:
@@ -22,9 +22,10 @@ jobs:
       before_deploy:
         - sudo apt-get install -y calibre
       deploy:
+        skip_cleanup: true
         provider: script
         script: bash deploy.sh
-        on:
-          tags: true
+        # on:
+          # branch: testing
+          # tags: true
           # branch: master
-          all_branches: true
