@@ -23,5 +23,5 @@ jobs:
       # if: tag IS present
       before_script:
         - sudo apt-get install -y calibre
-        - pip3 install --user cffconvert
+        - pip3 install cffconvert
       script: bash deploy.sh
