@@ -1,4 +1,5 @@
 import requests
+import json
 
 access_token = 'ICoznc9omFAFLgYepuNCybKbZ5WP22HCdsTL6gTqw27SmR7a4fKuNALmDLv9'
 baseUrl = 'https://sandbox.zenodo.org'
@@ -28,6 +29,18 @@ def newVersion(deposition):
     assert resp.status_code==201, 'Failed to create new version of deposition'
     return resp.json()
 
+
+def updateMetadata(newVersionId):
+    url = '{base_url}/api/deposit/depositions/{id}'.format(
+        base_url=baseUrl, id=str(newVersionId))
+    metadata = json.load(open('.zenodo.json', 'r'))
+    # metadata not included in CFF format
+    metadata['upload_type'] = 'publication'
+    metadata['publication_type'] = 'book'
+    data = { 'metadata': metadata }
+    headers = { 'Content-Type': 'application/json' }
+    resp = requests.put(url, data=json.dumps(data), headers=headers, params={'access_token': access_token})
+    assert resp.status_code==200, 'Failed to update metadata'
 
 def getFiles(deposition):
     '''List all files associated with our deposition'''
@@ -77,8 +90,9 @@ def publish(newVersionId):
 if __name__ == '__main__':
     deposition = getDeposition()
     newVersion = newVersion(deposition)
-    files = getFiles(newVersion)
     newVersionId = getNewVersionId(newVersion)
+    updateMetadata(newVersionId)
+    files = getFiles(newVersion)
     deleteBook(newVersionId, files)
     uploadBook(newVersionId)
     publish(newVersionId)

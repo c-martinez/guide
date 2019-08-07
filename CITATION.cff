@@ -1,0 +1,74 @@
+cff-version: 1.0.3
+message: If you use this software, please cite it as below.
+title: Software Development Guide
+abstract: This is a guide to software development and projects at the Netherlands eScience Center. It both serves as a source of information for exactly how we work at the eScience Center, and as a basis for discussions and reaching consensus on this topic.
+version: V1
+authors:
+  - family-names: Drost
+    given-names: Niels
+  - family-names: Spaaks
+    given-names: Jurriaan H.
+  - family-names: Andela
+    given-names: Bouwe
+  - family-names: Veen
+    given-names: Lourens
+  - family-names: Zwaan
+    name-particle: van der
+    given-names: Janneke
+  - family-names: Verhoeven
+    given-names: Stefan
+  - family-names: Bos
+    given-names: Patrick
+  - family-names: Kuzak
+    given-names: Mateusz
+  - family-names: Werkhoven
+    name-particle: van
+    given-names: Ben
+  - family-names: Attema
+    given-names: Jisk
+  - family-names: Hidding
+    given-names: Johannes
+  - family-names: Hees
+    name-particle: van
+    given-names: Vincent
+  - family-names: Martinez
+    given-names: Carlos
+    orcid: "https://orcid.org/0000-0001-5565-7577"
+  - family-names: Spreeuw
+    given-names: Hanno
+  - family-names: Borgdorff
+    given-names: Joris
+  - family-names: Leinweber
+    given-names: Katrin
+  - family-names: Diblen
+    given-names: Faruk
+  - family-names: Oord
+    name-particle: van den
+    given-names: Gijs
+  - family-names: Goncalves
+    given-names: Romulo
+  - family-names: Kuzniar
+    given-names: Arnold
+  - family-names: Kuppevelt
+    name-particle: van
+    given-names: Dafne
+  - family-names: Weel
+    given-names: Berend
+  - family-names: Meijer
+    given-names: Christiaan
+  - family-names: Maassen
+    given-names: Jason
+  - family-names: Rodríguez-Sánchez
+    given-names: Pablo
+  - family-names: Klaver
+    given-names: Tom
+  - family-names: Hage
+    name-particle: van
+    given-names: Willem Robert
+  - family-names: Zapata
+    given-names: Felipe
+  - family-names: Bakker
+    given-names: Tom
+date-released: 2019-08-06
+repository-code: https://github.com/NLeSC/guide
+license: CC-BY-4.0
