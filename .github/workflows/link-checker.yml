@@ -9,6 +9,6 @@ jobs:
         uses: peter-evans/link-checker@v1
         id: lc
         with:
-          args: -v -t 60 -c 16 -d $PWD -r
+          args: -v -t 60 -c 16 -d $PWD -r *
       - name: Output exit code
         run: exit ${{ steps.lc.outputs.exit_code }}
