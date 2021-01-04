@@ -15,15 +15,15 @@ jobs:
       - name: Count broken links
         run: |
             broken_max=10
-            broken=$(grep ERROR ./link-checker/out.md)
+            broken=$(grep ERROR ./link-checker/out.md || e)
             broken_count=$(echo "$broken" | wc -l)
 
             if [ "$broken_count" -gt "$broken_max" ]; then
-                echo "Number of broken links (${broken}) exceeds maximum allowed number (${broken_max})."
+                echo "Number of broken links (${broken_count}) exceeds maximum allowed number (${broken_max})."
                 echo "Broken links: "
                 echo "$broken"
                 exit 1
             else
-                echo "Number of broken links (${broken}) less than or equal to maximum allowed number (${broken_max})."
+                echo "Number of broken links (${broken_count}) less than or equal to maximum allowed number (${broken_max})."
                 exit 0
             fi
