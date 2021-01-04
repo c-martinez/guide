@@ -16,7 +16,7 @@ jobs:
             broken=$(grep ERROR ./link-checker/out.md)
             broken_count=$(echo "$broken" | wc -l)
 
-            if [ "$broken" -gt "$broken_max" ]; then
+            if [ "$broken_count" -gt "$broken_max" ]; then
                 echo "Number of broken links (${broken}) exceeds maximum allowed number (${broken_max})."
                 echo "Broken links: "
                 echo "$broken"
