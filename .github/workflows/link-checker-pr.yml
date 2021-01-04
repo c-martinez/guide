@@ -15,7 +15,7 @@ jobs:
       - name: Count broken links
         run: |
             broken_max=10
-            broken=$(grep ERROR ./link-checker/out.md || e)
+            broken=$(grep ERROR ./link-checker/out.md || echo "Ok")
             broken_count=$(echo "$broken" | wc -l)
 
             if [ "$broken_count" -gt "$broken_max" ]; then
