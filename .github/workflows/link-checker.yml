@@ -5,20 +5,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: List content
-        run: find ${{ github.workspace }}
       - name: Link Checker
-        uses: peter-evans/link-checker@v1
-        id: lc
+        uses: lycheeverse/lychee-action@v1
         with:
-          args: -v -t 60 -c 16 -d /github/workspace -r *
+          args: -v -t 60 -d /github/workspace -r *
       - name: Count broken links
         run: |
             broken_max=10
-            broken=$(grep ERROR ./link-checker/out.md | wc -l)
+            broken=$(grep ERROR ./lychee/out.md)
+            broken_count=$(echo "$broken" | wc -l)
 
             if [ "$broken" -gt "$broken_max" ]; then
                 echo "Number of broken links (${broken}) exceeds maximum allowed number (${broken_max})."
+                echo "Broken links: "
+                echo "$broken"
                 exit 1
             else
                 echo "Number of broken links (${broken}) less than or equal to maximum allowed number (${broken_max})."
