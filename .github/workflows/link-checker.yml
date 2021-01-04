@@ -8,10 +8,11 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --verbose --timeout 60 *.md
+          args: --verbose --timeout 60 ./**/*.md --output out.json --format json
       - name: Count broken links
         if: always()
         run: |
+            find .
             broken_max=10
             broken=$(grep ERROR ./lychee/out.md)
             broken_count=$(echo "$broken" | wc -l)
