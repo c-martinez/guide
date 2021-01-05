@@ -8,7 +8,7 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --verbose --timeout 60 ./**/*.md --format json
+          args: --timeout 60 ./**/*.md --format json
       - name: Count broken links
         if: always()
         run: |
