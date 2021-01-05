@@ -8,13 +8,14 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1
         env:
-          LYCHEE_OUT: ./lychee/
+          LYCHEE_OUT: /github/workflow/
         with:
           args: --timeout 60 ./**/*.md --format json
       - name: Count broken links
         if: always()
         run: |
-            find .
+            ls /github/workflow/
+            cat /github/workflow/lychee/out.md
             broken_max=10
             broken=$(grep ERROR ./lychee/out.md)
             broken_count=$(echo "$broken" | wc -l)
