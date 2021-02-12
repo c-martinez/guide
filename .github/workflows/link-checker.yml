@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Link Checker
-        uses: lycheeverse/lychee-action@v1
+        uses: lycheeverse/lychee-action@v1.0.4
         env:
           LYCHEE_OUT: /github/workflow/
         with:
@@ -15,6 +15,10 @@ jobs:
         if: always()
         run: |
             broken_max=10
+            ls
+            ls lychee
+            cat ./lychee/out.md
+            echo '==================================='
             broken=$(grep "Errors" ./lychee/out.md | cut -d ":" -f2)
 
             if [ "$broken" -gt "$broken_max" ]; then
