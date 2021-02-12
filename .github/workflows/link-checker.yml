@@ -10,20 +10,16 @@ jobs:
         env:
           LYCHEE_OUT: /github/workflow/
         with:
-          args: --timeout 60 ./**/*.md --format json
+          args: --timeout 60 ./**/*.md
       - name: Count broken links
         if: always()
         run: |
-            ls /github/workflow/
-            cat /github/workflow/lychee/out.md
             broken_max=10
-            broken=$(grep ERROR ./lychee/out.md)
-            broken_count=$(echo "$broken" | wc -l)
+            broken=$(grep "Errors" ./lychee/out.md | cut -d ":" -f2)
 
             if [ "$broken" -gt "$broken_max" ]; then
                 echo "Number of broken links (${broken}) exceeds maximum allowed number (${broken_max})."
-                echo "Broken links: "
-                echo "$broken"
+                cat ./lychee/out.md
                 exit 1
             else
                 echo "Number of broken links (${broken}) less than or equal to maximum allowed number (${broken_max})."
